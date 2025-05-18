@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hitesh Purohit - Chartered Accountant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <header class="header">
+<div class="lang-toggle">
+  <button onclick="toggleLanguage()">Translate to German</button>
+</div>
+    <div class="profile">
+      <img src="profile.jpg" alt="Hitesh Purohit" class="profile-img"/>
+      <div>
+        <h1>Hitesh Purohit</h1>
+        <p>Chartered Accountant | Finance Strategist</p>
+        <p>Email: <a href="mailto:cahiteshpurohit1@gmail.com">cahiteshpurohit1@gmail.com</a> | Phone: 704 098 4511</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card fade-in" id="about">
+      <h2>About</h2>
+      <p>Chartered Accountant with 9 years of experience in finance, currently pursuing the Executive Finance Programme at IIT Delhi. Expertise in FP&A, financial reporting, cost control, budgeting, taxation, and business finance.</p>
+    </section>
+
+    <section class="card fade-in" id="experience">
+      <h2>Work Experience</h2>
+      <ul>
+        <li><strong>Finance Head</strong> – IIDE Education (2023 – Present)</li>
+        <li><strong>FP&A and Consolidation Manager</strong> – Godrej Properties</li>
+        <li><strong>Finance Manager</strong> – Piramal Enterprises</li>
+        <li><strong>Divisional Finance Manager</strong> – Crompton Greaves</li>
+        <li><strong>Finance Manager Global FP&A</strong> – Cipla Health</li>
+        <li><strong>Sr. Consultant</strong> – Fintoo</li>
+      </ul>
+    </section>
+
+    <section class="card fade-in" id="education">
+      <h2>Education</h2>
+      <ul>
+        <li>CFO Programme – IIT Delhi (2025 expected)</li>
+        <li>Chartered Accountant – ICAI (2016)</li>
+        <li>B.Com – Mumbai University</li>
+      </ul>
+    </section>
+
+    <section class="card fade-in" id="skills">
+      <h2>Skills</h2>
+      <p>Excel | SAP | Power BI | IBM Cognos | Hyperion | Tally Prime</p>
+    </section>
+
+    <section class="card fade-in" id="accomplishments">
+      <h2>Accomplishments</h2>
+      <ul>
+        <li>Felicitated by ICAI for GST seminars</li>
+        <li>Employee of the Year at PRNAM</li>
+        <li>Recognized by Cipla for optimizing GST credits</li>
+        <li>Speaker at Wipro and TCS tax planning sessions</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Hitesh Purohit</p>
+  </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.1 };
+    const appearOnScroll = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("appear");
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script><script>
+  const content = {
+    en: {
+      about: "About",
+      aboutText: "Chartered Accountant with 9 years of experience in finance, currently pursuing the Executive Finance Programme at IIT Delhi. Expertise in FP&A, financial reporting, cost control, budgeting, taxation, and business finance.",
+      experience: "Work Experience",
+      education: "Education",
+      skills: "Skills",
+      accomplishments: "Accomplishments",
+      skillList: "Excel | SAP | Power BI | IBM Cognos | Hyperion | Tally Prime",
+      eduList: [
+        "CFO Programme – IIT Delhi (2025 expected)",
+        "Chartered Accountant – ICAI (2016)",
+        "B.Com – Mumbai University"
+      ],
+      footer: "© 2025 Hitesh Purohit"
+    },
+    de: {
+      about: "Über mich",
+      aboutText: "Wirtschaftsprüfer mit 9 Jahren Erfahrung im Finanzwesen, derzeit Teilnehmer des Executive Finance Programms am IIT Delhi. Fachkenntnisse in FP&A, Finanzberichterstattung, Kostenkontrolle, Budgetierung, Besteuerung und Unternehmensfinanzierung.",
+      experience: "Berufserfahrung",
+      education: "Ausbildung",
+      skills: "Fähigkeiten",
+      accomplishments: "Erfolge",
+      skillList: "Excel | SAP | Power BI | IBM Cognos | Hyperion | Tally Prime",
+      eduList: [
+        "CFO-Programm – IIT Delhi (voraussichtlich 2025)",
+        "Wirtschaftsprüfer – ICAI (2016)",
+        "B.Com – Universität Mumbai"
+      ],
+      footer: "© 2025 Hitesh Purohit"
+    }
+  };
+
+  let currentLang = "en";
+
+  function toggleLanguage() {
+    currentLang = currentLang === "en" ? "de" : "en";
+    document.getElementById("about").querySelector("h2").innerText = content[currentLang].about;
+    document.getElementById("about").querySelector("p").innerText = content[currentLang].aboutText;
+
+    document.getElementById("experience").querySelector("h2").innerText = content[currentLang].experience;
+    document.getElementById("education").querySelector("h2").innerText = content[currentLang].education;
+    document.getElementById("skills").querySelector("h2").innerText = content[currentLang].skills;
+    document.getElementById("skills").querySelector("p").innerText = content[currentLang].skillList;
+    document.getElementById("accomplishments").querySelector("h2").innerText = content[currentLang].accomplishments;
+
+    const eduItems = document.querySelector("#education ul").children;
+    content[currentLang].eduList.forEach((txt, i) => {
+      eduItems[i].innerText = txt;
+    });
+
+    document.querySelector("footer p").innerText = content[currentLang].footer;
+  }
+</script>
+</body>
+</html>
